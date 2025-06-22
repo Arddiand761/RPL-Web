@@ -7,7 +7,7 @@ use App\Models\Comic; // <-- Import model Comic
 
 class DashboardController extends Controller
 {
-        public function index()
+    public function index()
     {
         // Ambil beberapa komik untuk ditampilkan di section "Komik Pilihan"
         // Misalnya kita ambil 8 komik terbaru

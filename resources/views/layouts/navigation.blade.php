@@ -6,13 +6,13 @@
                     <a href="/">
                         <div
                             class="flex items-center justify-center w-10 h-10 text-xl font-bold text-white bg-red-500 rounded-full">
-                            K
+                            <img src="{{ asset('images/logoKomik.svg') }}" alt="Logo" class="object-contain w-8 h-8" />
                         </div>
                     </a>
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <a href="#"
+                    <a href="/about"
                         class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 text-gray-700 transition duration-150 ease-in-out border-b-2 border-transparent hover:text-gray-900 focus:outline-none focus:text-gray-900 dark:text-gray-200 dark:hover:text-white">
                         About Us
                     </a>
