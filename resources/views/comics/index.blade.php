@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Komik</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-
-<body class="bg-gray-100">
     <x-app-layout>
         <div class="container p-4 mx-auto md:p-8">
             <h1 class="mb-8 text-3xl font-bold text-gray-800 dark:text-gray-100">Daftar Komik</h1>
@@ -37,6 +27,4 @@
             </div>
         </div>
     </x-app-layout>
-</body>
 
-</html>

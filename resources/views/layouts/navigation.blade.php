@@ -12,7 +12,7 @@
                     </a>
                 </div>
 
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" x-data="{ openSearch: false }">
                     <a href="{{ route('dashboard') }}"
                         class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 text-gray-700 transition duration-150 ease-in-out border-b-2 border-transparent hover:text-gray-900 focus:outline-none focus:text-gray-900 dark:text-gray-200 dark:hover:text-white">
                         Dashboard
@@ -32,7 +32,52 @@
                 </div>
             </div>
 
-            <div class="hidden sm:flex sm:items-center sm:ml-6">
+            <div class="flex items-center sm:ml-auto sm:mr-4" x-data="{ openSearch: false }">
+                <!-- Search Icon & Form, now placed just left of dark mode toggle -->
+                <div class="relative">
+                    <button @click="openSearch = !openSearch" type="button"
+                        class="flex items-center justify-center w-8 h-8 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none">
+                        <!-- Search Icon -->
+                        <svg class="w-6 h-6 text-gray-700 dark:text-gray-200" fill="none" stroke="currentColor"
+                            stroke-width="2" viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="7" stroke="currentColor" />
+                            <line x1="16.65" y1="16.65" x2="21" y2="21" stroke="currentColor" />
+                        </svg>
+                    </button>
+                    <form x-show="openSearch" @click.away="openSearch = false" action="{{ route('comics.index') }}"
+                        method="GET"
+                        class="absolute right-0 z-10 flex mt-2 bg-white border rounded shadow-lg dark:bg-gray-800 dark:border-gray-700"
+                        x-transition>
+                        <input type="text" name="search" value="{{ request('search') }}"
+                            class="w-40 px-3 py-1 text-gray-900 bg-transparent border-0 rounded-l dark:bg-gray-800 dark:text-gray-100 focus:outline-none"
+                            placeholder="Cari judul komik...">
+                        <button type="submit"
+                            class="px-3 py-1 text-white transition bg-blue-600 rounded-r hover:bg-blue-700">Cari
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="hidden sm:flex sm:items-center sm:ml-0">
+                <!-- Toggle Dark Mode -->
+                <button id="darkModeToggle"
+                    class="flex items-center justify-center w-10 h-10 mr-2 transition bg-gray-300 border border-gray-300 rounded-full dark:bg-gray-700 dark:border-gray-600 focus:outline-none"
+                    title="Toggle dark mode">
+                    <!-- Matahari (light mode) -->
+                    <svg id="sunIcon" class="w-5 h-5 text-yellow-400 dark:hidden" fill="none" stroke="currentColor"
+                        stroke-width="2" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"
+                            fill="currentColor" />
+                        <path stroke="currentColor" stroke-width="2"
+                            d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                    </svg>
+                    <!-- Bulan (dark mode) -->
+                    <svg id="moonIcon" class="hidden w-5 h-5 text-gray-200 dark:inline" fill="none"
+                        stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />
+                    </svg>
+                </button>
+
                 @guest
                     <a href="{{ route('login') }}"
                         class="px-4 py-2 text-sm font-semibold text-gray-700 transition bg-gray-200 rounded-md hover:bg-gray-300 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700">
@@ -45,20 +90,6 @@
                 @endguest
 
                 @auth
-                    <!-- Toggle Dark Mode -->
-                    <button id="darkModeToggle"
-                        class="flex items-center px-3 py-2 mr-2 transition bg-gray-200 rounded-full dark:bg-gray-800 focus:outline-none"
-                        title="Toggle dark mode">
-                        <svg id="sunIcon" class="w-5 h-5 text-yellow-500 dark:hidden" fill="none" stroke="currentColor"
-                            stroke-width="2" viewBox="0 0 24 24">
-                            <path
-                                d="M12 3v1m0 16v1m8.66-13.66l-.71.71M4.05 19.07l-.71.71m16.97 0l-.71-.71M4.05 4.93l-.71-.71M21 12h-1M4 12H3m9 5a5 5 0 100-10 5 5 0 000 10z" />
-                        </svg>
-                        <svg id="moonIcon" class="hidden w-5 h-5 text-gray-800 dark:inline" fill="none"
-                            stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />
-                        </svg>
-                    </button>
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button

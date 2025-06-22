@@ -9,11 +9,14 @@ use App\Models\Comic; // <-- Import model Comic
 class ComicController extends Controller
 {
     // Method untuk halaman utama (daftar semua komik)
-    public function index()
+    public function index(Request $request)
     {
-        // Ambil semua data komik, urutkan dari yang terbaru, lalu kirim ke view
-        $comics = Comic::latest()->paginate(12); // paginate agar tidak berat jika komik banyak
-        return view('comics.index', ['comics' => $comics]);
+        $query = Comic::query();
+        if ($request->filled('search')) {
+            $query->where('title', 'like', '%' . $request->search . '%');
+        }
+        $comics = $query->paginate(12);
+        return view('comics.index', compact('comics'));
     }
 
     // Method untuk halaman detail satu komik
