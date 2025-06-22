@@ -4,7 +4,7 @@
             <div class="mb-12">
                 <div class="flex items-center justify-between mb-4">
                     <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-100">Komik Gratis Pilihan</h2>
-                    <a href="#"
+                    <a href="{{ route('comics.index') }}"
                         class="text-sm font-semibold text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300">Lihat
                         Semua</a>
                 </div>

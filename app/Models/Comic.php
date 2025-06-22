@@ -25,4 +25,8 @@ class Comic extends Model
     {
         return $this->hasMany(Chapter::class);
     }
+    public function comments()
+    {
+        return $this->hasMany(\App\Models\Comment::class);
+    }
 }

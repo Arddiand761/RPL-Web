@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ComicController;
 use App\Http\Controllers\ChapterController;
 use App\Models\Comic;
+use App\Http\Controllers\CommentController;
 
 Route::get('/', function () {
     $comics = Comic::latest()->take(8)->get();
@@ -22,8 +23,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/comics', [ComicController::class, 'index'])->name('comics.index');
 Route::get('/comics/{comic}', [ComicController::class, 'show'])->name('comics.show');
 Route::get('/chapters/{chapter}', [ChapterController::class, 'show'])->name('chapters.show');
 Route::view('/about', 'about')->name('about');
+Route::post('/comics/{comic}/comments', [CommentController::class, 'store'])->middleware('auth')->name('comments.store');
 
 require __DIR__ . '/auth.php';
