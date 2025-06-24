@@ -24,7 +24,7 @@
             </a>
             <!-- Menu -->
             <div class="flex items-center gap-8">
-                <a href="#"
+                <a href="{{ route('about') }}"
                     class="text-base font-semibold text-gray-800 transition hover:text-red-600 dark:text-gray-100 dark:hover:text-red-400">About
                     Us</a>
                 <a href="#"
@@ -66,7 +66,7 @@
             <!-- Komik Gratis Pilihan -->
             <div class="flex items-center justify-between mb-6">
                 <h2 class="text-xl font-bold text-gray-800 dark:text-gray-100">Komik Gratis Pilihan</h2>
-                <a href="#"
+                <a href="{{ route('login') }}"
                     class="text-sm font-semibold text-red-600 transition hover:text-red-800 dark:text-red-400 dark:hover:text-red-300">Lihat
                     Semua</a>
             </div>

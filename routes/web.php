@@ -28,5 +28,8 @@ Route::get('/comics/{comic}', [ComicController::class, 'show'])->name('comics.sh
 Route::get('/chapters/{chapter}', [ChapterController::class, 'show'])->name('chapters.show');
 Route::view('/about', 'about')->name('about');
 Route::post('/comics/{comic}/comments', [CommentController::class, 'store'])->middleware('auth')->name('comments.store');
+Route::delete('/comics/{comic}', [ComicController::class, 'destroy'])
+    ->middleware(['auth'])
+    ->name('comics.destroy');
 
 require __DIR__ . '/auth.php';

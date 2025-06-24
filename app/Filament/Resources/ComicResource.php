@@ -96,6 +96,7 @@ class ComicResource extends Resource
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(), // Tambahkan baris ini untuk tombol hapus per komik
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

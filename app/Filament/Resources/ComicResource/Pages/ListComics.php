@@ -14,6 +14,12 @@ class ListComics extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
+            Actions\Action::make('backToDashboard')
+                ->label('Kembali ke Dashboard')
+                ->color('secondary')
+                ->icon('heroicon-o-arrow-left')
+                ->url(route('dashboard'))
+                ->outlined(),
         ];
     }
 }

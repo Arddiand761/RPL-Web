@@ -3,13 +3,12 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <div class="flex items-center shrink-0">
-                    <a href="/">
-                        <div
-                            class="flex items-center justify-center w-10 h-10 text-xl font-bold text-white bg-red-500 rounded-full">
+                    
+                        <a href="/" class="flex items-center gap-2">
                             <img src="{{ asset('images/logoKomik.svg') }}" alt="Logo"
-                                class="object-contain w-8 h-8" />
-                        </div>
-                    </a>
+                                class="object-contain w-10 h-10" />
+                        </a>
+
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" x-data="{ openSearch: false }">

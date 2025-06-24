@@ -26,4 +26,13 @@ class ComicController extends Controller
         // Kita hanya perlu mengirimkan data komik tersebut ke view
         return view('comics.show', ['comic' => $comic]);
     }
+    public function destroy(Comic $comic)
+    {
+        // Hanya admin yang boleh hapus
+        if (!auth()->user()->is_admin) {
+            abort(403, 'Unauthorized');
+        }
+        $comic->delete();
+        return redirect()->route('comics.index')->with('success', 'Komik berhasil dihapus.');
+    }
 }

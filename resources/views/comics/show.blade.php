@@ -6,6 +6,19 @@
                 ← Kembali ke Dashboard
             </a>
         </div>
+        @auth
+            @if (auth()->user()->is_admin)
+                <form action="{{ route('comics.destroy', $comic) }}" method="POST" class="inline-block mb-6"
+                    onsubmit="return confirm('Yakin ingin menghapus komik ini?');">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit"
+                        class="px-4 py-2 mb-4 text-white transition bg-red-600 rounded hover:bg-red-700">
+                        Hapus Komik
+                    </button>
+                </form>
+            @endif
+        @endauth
         <div class="flex flex-col p-6 mb-8 bg-white rounded-lg shadow-lg dark:bg-gray-800 md:flex-row">
             <img src="{{ Storage::url($comic->thumbnail) }}" alt="{{ $comic->title }}"
                 class="object-cover w-48 mb-4 rounded-md shadow-md h-72 md:mb-0 md:mr-6">
