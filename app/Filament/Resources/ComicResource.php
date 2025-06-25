@@ -38,6 +38,30 @@ class ComicResource extends Resource
                     ->maxLength(255)
                     ->columnSpanFull(), // Agar lebarnya penuh
 
+                TextInput::make('author')
+                    ->label('Penulis')
+                    ->required()
+                    ->maxLength(100)
+                    ->columnSpanFull(), // Agar lebarnya penuh
+
+                Select::make('genre')
+                    ->label('Genre')
+                    ->multiple()
+                    ->options([
+                        'Action' => 'Action',
+                        'Adventure' => 'Adventure',
+                        'Comedy' => 'Comedy',
+                        'Drama' => 'Drama',
+                        'Fantasy' => 'Fantasy',
+                        'Romance' => 'Romance',
+                        'Slice of Life' => 'Slice of Life',
+                        'Horror' => 'Horror',
+                        'Sci-Fi' => 'Sci-Fi',
+                        // Tambahkan genre lain sesuai kebutuhan
+                    ])
+                    ->required()
+                    ->columnSpanFull(), // Agar lebarnya penuh
+
                 Select::make('status')
                     ->label('Status')
                     ->options([
@@ -75,6 +99,17 @@ class ComicResource extends Resource
                     ->label('Judul Komik')
                     ->searchable() // Membuat kolom ini bisa dicari
                     ->sortable(),
+
+                TextColumn::make('author')
+                    ->label('Penulis')
+                    ->searchable()
+                    ->sortable(),
+
+                TextColumn::make('genre')
+                    ->label('Genre')
+                    ->formatStateUsing(fn($state) => is_array($state) ? implode(', ', $state) : $state)
+                    ->badge()
+                    ->searchable(),
 
                 TextColumn::make('status')
                     ->badge() // Menampilkan status sebagai "badge" agar lebih menarik

@@ -16,9 +16,15 @@ class Comic extends Model
      */
     protected $fillable = [
         'title',
-        'sinopsis',
+        'author', // tambahkan ini
+        'genre',
         'status',
         'thumbnail',
+        'sinopsis',
+    ];
+
+    protected $casts = [
+        'genre' => 'array',
     ];
 
     public function chapters()

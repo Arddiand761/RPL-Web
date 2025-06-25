@@ -47,14 +47,19 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
-            'is_admin' => 'boolean', 
+            'is_admin' => 'boolean',
         ];
     }
 
 
-        // Method ini memberitahu Filament siapa yang boleh mengakses panel admin
+    // Method ini memberitahu Filament siapa yang boleh mengakses panel admin
     public function canAccessPanel(Panel $panel): bool
     {
         return $this->is_admin; // Jika is_admin = true, maka boleh akses.
+    }
+
+    public function bookmarks()
+    {
+        return $this->hasMany(Bookmark::class);
     }
 }

@@ -12,8 +12,7 @@
                     onsubmit="return confirm('Yakin ingin menghapus komik ini?');">
                     @csrf
                     @method('DELETE')
-                    <button type="submit"
-                        class="px-4 py-2 mb-4 text-white transition bg-red-600 rounded hover:bg-red-700">
+                    <button type="submit" class="px-4 py-2 mb-4 text-white transition bg-red-600 rounded hover:bg-red-700">
                         Hapus Komik
                     </button>
                 </form>
@@ -26,6 +25,15 @@
                 <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100">{{ $comic->title }}</h1>
                 <span
                     class="inline-block bg-blue-100 text-blue-800 text-sm font-medium my-3 px-2.5 py-0.5 rounded">{{ $comic->status }}</span>
+                {{-- Tambahkan genre di bawah status --}}
+                <div class="flex flex-wrap gap-2 my-2">
+                    @foreach ($comic->genre ?? [] as $genre)
+                        <span
+                            class="inline-block bg-pink-100 text-pink-700 text-xs font-semibold px-2.5 py-0.5 rounded">
+                            {{ $genre }}
+                        </span>
+                    @endforeach
+                </div>
                 <p class="mt-4 text-gray-600 dark:text-gray-300">{!! $comic->sinopsis !!}</p>
             </div>
         </div>
@@ -69,8 +77,7 @@
             <div>
                 @forelse ($comic->comments()->latest()->get() as $comment)
                     <div class="p-3 mb-4 border-b border-gray-200 dark:border-gray-700">
-                        <span
-                            class="font-semibold text-gray-800 dark:text-gray-100">{{ $comment->user->name }}</span>
+                        <span class="font-semibold text-gray-800 dark:text-gray-100">{{ $comment->user->name }}</span>
                         <span
                             class="ml-2 text-xs text-gray-500 dark:text-gray-400">{{ $comment->created_at->diffForHumans() }}</span>
                         <div class="mt-1 text-gray-700 dark:text-gray-200">{{ $comment->content }}</div>
@@ -80,5 +87,19 @@
                 @endforelse
             </div>
         </div>
+
+        @auth
+            <form action="{{ route('comics.bookmark', $comic) }}" method="POST" class="inline">
+                @csrf
+                <button type="submit"
+                    class="px-3 py-1 rounded bg-pink-500 text-white text-xs font-semibold hover:bg-pink-700 transition">
+                    @if (auth()->user()->bookmarks->where('comic_id', $comic->id)->count())
+                        Hapus Bookmark
+                    @else
+                        Bookmark
+                    @endif
+                </button>
+            </form>
+        @endauth
     </div>
 </x-app-layout>

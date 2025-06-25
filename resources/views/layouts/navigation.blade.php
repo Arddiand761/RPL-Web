@@ -3,11 +3,10 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <div class="flex items-center shrink-0">
-                    
-                        <a href="/" class="flex items-center gap-2">
-                            <img src="{{ asset('images/logoKomik.svg') }}" alt="Logo"
-                                class="object-contain w-10 h-10" />
-                        </a>
+
+                    <a href="/" class="flex items-center gap-2">
+                        <img src="{{ asset('images/logoKomik.svg') }}" alt="Logo" class="object-contain w-10 h-10" />
+                    </a>
 
                 </div>
 
@@ -20,11 +19,11 @@
                         class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 text-gray-700 transition duration-150 ease-in-out border-b-2 border-transparent hover:text-gray-900 focus:outline-none focus:text-gray-900 dark:text-gray-200 dark:hover:text-white">
                         About Us
                     </a>
-                    <a href="/"
-                        class="inline-flex items-center px-1 pt-1 border-b-2 {{ request()->is('/') ? 'border-indigo-400 text-gray-900 dark:text-white' : 'border-transparent text-gray-500 dark:text-gray-200' }} hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                    <a href="{{ route('explore') }}"
+                        class="inline-flex items-center px-1 pt-1 border-b-2 {{ request()->routeIs('explore') ? 'border-indigo-400 text-gray-900 dark:text-white' : 'border-transparent text-gray-500 dark:text-gray-200' }} hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
                         Explore
                     </a>
-                    <a href="#"
+                    <a href="{{ route('collection') }}"
                         class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-b-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 dark:text-gray-200 dark:hover:text-white">
                         Collection
                     </a>
