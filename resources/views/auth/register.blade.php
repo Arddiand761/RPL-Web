@@ -1,7 +1,7 @@
 <x-guest-layout>
     <div>
         <div class="flex flex-col items-center mb-6">
-            <h1 class="text-2xl font-bold text-pink-600 mb-1">Daftar Akun Baru</h1>
+            <h1 class="text-2xl font-bold text-[#FF6900] mb-1">Daftar Akun Baru</h1>
             <p class="text-gray-500 dark:text-gray-400 text-sm">Buat akun untuk menikmati semua fitur.</p>
         </div>
         <form method="POST" action="{{ route('register') }}">
@@ -40,10 +40,11 @@
             </div>
 
             <div class="flex flex-col gap-2 mt-6">
-                <x-primary-button class="w-full justify-center bg-pink-600 hover:bg-pink-700">
+                <x-primary-button
+                    class="w-full justify-center bg-[#FF6900] hover:bg-white hover:text-[#FF6900] border-2 border-[#FF6900] text-white transition">
                     {{ __('Register') }}
                 </x-primary-button>
-                <a class="text-center text-sm font-semibold text-pink-600 underline rounded-md dark:text-pink-400 hover:text-pink-800 dark:hover:text-pink-300 transition"
+                <a class="text-center text-sm font-semibold text-[#FF6900] underline rounded-md hover:text-white hover:bg-[#FF6900] transition"
                     href="{{ route('login') }}">
                     {{ __('Sudah punya akun? Masuk di sini!') }}
                 </a>

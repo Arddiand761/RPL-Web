@@ -4,31 +4,32 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Web Comic</title>
+    <title>POJOK KOMIK</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="{{ asset('images/logoKomik.svg') }}">
 </head>
 
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
+<body class="flex flex-col min-h-screen text-gray-900 bg-gray-50 dark:bg-gray-900 dark:text-gray-100">
     <!-- Navbar -->
-    <header class="w-full shadow bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+    <header class="w-full bg-white border-b border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700">
         <nav class="flex items-center justify-between h-16 max-w-6xl px-4 mx-auto">
             <!-- Logo -->
             <a href="/" class="flex items-center gap-2">
                 <img src="{{ asset('images/logoKomik.svg') }}" alt="Logo"
                     class="object-contain w-10 h-10 drop-shadow-lg" />
-                <span class="hidden text-2xl font-extrabold tracking-tight text-pink-600 sm:inline">POJOK KOMIK</span>
+                <span class="hidden text-2xl font-extrabold tracking-tight text-[#FF6900] sm:inline">POJOK KOMIK</span>
             </a>
             <!-- Menu -->
             <div class="flex items-center gap-8">
                 <a href="{{ route('about') }}"
-                    class="text-base font-semibold text-gray-700 transition hover:text-pink-600 dark:text-gray-300 dark:hover:text-pink-400">About
+                    class="text-base font-semibold text-[#FF6900] transition hover:underline dark:text-[#FF6900]">About
                     Us</a>
                 <a href="#"
-                    class="text-base font-semibold text-gray-700 transition hover:text-pink-600 dark:text-gray-300 dark:hover:text-pink-400">Explore</a>
+                    class="text-base font-semibold text-[#FF6900] transition hover:underline dark:text-[#FF6900]">Explore</a>
                 <a href="#"
-                    class="text-base font-semibold text-gray-700 transition hover:text-pink-600 dark:text-gray-300 dark:hover:text-pink-400">Collection</a>
+                    class="text-base font-semibold text-[#FF6900] transition hover:underline dark:text-[#FF6900]">Collection</a>
             </div>
             <!-- Actions -->
             <div class="flex items-center gap-3">
@@ -47,33 +48,33 @@
                     </svg>
                 </button>
                 <a href="{{ route('login') }}"
-                    class="px-5 py-1.5 font-semibold rounded bg-pink-600 text-white shadow hover:bg-pink-700 transition">
-                    Login
-                </a>
+                    class="px-5 py-1.5 font-semibold rounded shadow transition
+                           bg-[#FF6900] text-white border-2 border-[#FF6900]
+                           hover:bg-white hover:text-[#FF6900]">Login</a>
                 <a href="{{ route('register') }}"
-                    class="px-5 py-1.5 font-semibold rounded bg-gray-100 text-gray-700 border border-gray-300 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-600 transition">
-                    Register
-                </a>
+                    class="px-5 py-1.5 font-semibold rounded shadow transition
+                           bg-white text-[#FF6900] border-2 border-[#FF6900]
+                           hover:bg-[#FF6900] hover:text-white">Register</a>
                 <a href="https://forms.gle/CtPHhwkGa9NMy9do6" id="admin-register-btn"
-                    class="px-5 py-1.5 font-semibold rounded bg-indigo-600 text-white shadow hover:bg-indigo-700 transition"
-                    target="_blank">
-                    Daftar Admin
-                </a>
+                    class="px-5 py-1.5 font-semibold rounded shadow transition
+                           bg-[#FF6900] text-white border-2 border-[#FF6900]
+                           hover:bg-white hover:text-[#FF6900]"
+                    target="_blank">Daftar Admin</a>
             </div>
         </nav>
     </header>
 
     <!-- Hero Section -->
-    <section class="w-full py-16 bg-white dark:bg-gray-800 shadow-sm">
+    <section class="w-full py-16 bg-white shadow-sm dark:bg-gray-900">
         <div class="max-w-4xl px-4 mx-auto text-center">
             <h1 class="mb-4 text-4xl font-extrabold text-gray-900 sm:text-5xl dark:text-white">
-                Selamat Datang di <span class="text-pink-600">POJOK KOMIK</span>
+                Selamat Datang di <span class="text-[#FF6900]">POJOK KOMIK</span>
             </h1>
             <p class="mb-6 text-lg text-gray-600 sm:text-xl dark:text-gray-300">
                 Temukan, baca, dan nikmati ribuan komik gratis pilihan terbaik dari para kreator Indonesia!
             </p>
             <a href="{{ route('login') }}"
-                class="inline-block px-8 py-3 text-lg font-bold text-white transition rounded-lg shadow-lg bg-pink-600 hover:bg-pink-700">
+                class="inline-block px-8 py-3 text-lg font-bold text-white transition rounded-lg shadow-lg border-2 border-[#FF6900] bg-[#FF6900] hover:bg-white hover:text-[#FF6900]">
                 Mulai Baca Sekarang
             </a>
         </div>
@@ -83,15 +84,15 @@
     <main class="w-full flex justify-center py-10 min-h-[calc(100vh-4rem)]">
         <div class="w-full max-w-6xl mx-auto">
             <!-- Komik Gratis Pilihan -->
-            <div class="flex items-center justify-between mb-6 px-2">
-                <h2 class="text-2xl font-extrabold text-gray-800 dark:text-gray-100 tracking-tight">Komik Gratis Pilihan
+            <div class="flex items-center justify-between px-2 mb-6">
+                <h2 class="text-2xl font-extrabold text-[#FF6900] dark:text-[#FF6900] tracking-tight">Komik Gratis
+                    Pilihan
                 </h2>
                 <a href="{{ route('login') }}"
-                    class="text-sm font-semibold text-pink-600 transition hover:text-pink-700 dark:text-pink-400 dark:hover:text-pink-300">
-                    Lihat Semua
-                </a>
+                    class="text-sm font-semibold text-[#FF6900] transition hover:underline dark:text-[#FF6900]">Lihat
+                    Semua</a>
             </div>
-            <div class="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4 px-2">
+            <div class="grid grid-cols-2 gap-8 px-2 sm:grid-cols-3 md:grid-cols-4">
                 @forelse ($comics as $comic)
                     <a href="{{ route('login') }}" class="group">
                         <div
@@ -109,11 +110,12 @@
                                 <div class="flex flex-wrap gap-1 mt-2">
                                     @foreach ($comic->genre ?? [] as $genre)
                                         <span
-                                            class="px-2 py-0.5 text-xs rounded bg-pink-100 text-pink-700">{{ $genre }}
+                                            class="px-2 py-0.5 text-xs rounded bg-[#FF6900] bg-opacity-10 text-[#FF6900]">{{ $genre }}
                                         </span>
                                     @endforeach
                                 </div>
-                                <span class="inline-block mt-2 px-2 py-0.5 text-xs rounded bg-blue-100 text-blue-700">
+                                <span
+                                    class="inline-block mt-2 px-2 py-0.5 text-xs rounded bg-[#FF6900] bg-opacity-10 text-[#FF6900]">
                                     {{ $comic->status }}
                                 </span>
                                 <p class="mt-2 text-xs text-gray-400 dark:text-gray-500">
@@ -132,25 +134,25 @@
 
     <!-- Footer -->
     <footer
-        class="w-full py-10 mt-10 bg-white dark:bg-gray-800 dark:text-gray-200 border-t border-gray-200 dark:border-gray-700">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        class="w-full py-10 mt-10 bg-white border-t border-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700">
+        <div class="max-w-6xl px-4 mx-auto">
+            <div class="grid grid-cols-1 gap-12 md:grid-cols-2">
                 <!-- Kolom Testimoni -->
                 <div>
-                    <h2 class="mb-4 text-xl font-bold text-gray-800 dark:text-gray-100">Kata Mereka Tentang Web Ini
+                    <h2 class="mb-4 text-xl font-bold text-[#FF6900] dark:text-[#FF6900]">Kata Mereka Tentang Web Ini
                     </h2>
                     <div class="flex flex-col gap-4">
                         @forelse ($testimonials ?? [] as $comment)
-                            <div class="p-4 bg-gray-100 dark:bg-gray-700 rounded text-gray-800 dark:text-gray-100">
-                                <div class="italic mb-1">"{{ Str::limit($comment->content, 100) }}"</div>
-                                <div class="text-xs text-gray-500 dark:text-gray-300 mt-2">
+                            <div class="p-4 text-gray-800 bg-gray-100 rounded dark:bg-gray-700 dark:text-gray-100">
+                                <div class="mb-1 italic">"{{ Str::limit($comment->content, 100) }}"</div>
+                                <div class="mt-2 text-xs text-gray-500 dark:text-gray-300">
                                     — {{ $comment->name ?? 'Anonim' }}, <span
                                         class="italic">{{ $comment->comic_title ?? '' }}</span>
                                 </div>
                             </div>
                         @empty
                             <div
-                                class="p-4 bg-gray-100 dark:bg-gray-700 rounded text-gray-600 dark:text-gray-300 text-center">
+                                class="p-4 text-center text-gray-600 bg-gray-100 rounded dark:bg-gray-700 dark:text-gray-300">
                                 Belum ada testimoni.
                             </div>
                         @endforelse
@@ -160,7 +162,7 @@
                 <div>
                     <h3 class="mb-4 text-lg font-semibold text-gray-800 dark:text-gray-100">Tulis Testimoni Anda</h3>
                     @if (session('success'))
-                        <div class="mb-3 p-2 rounded bg-green-100 text-green-700 text-sm">
+                        <div class="p-2 mb-3 text-sm text-green-700 bg-green-100 rounded">
                             {{ session('success') }}
                         </div>
                     @endif
@@ -169,26 +171,26 @@
                         <div>
                             <label class="block mb-1 text-sm font-medium" for="name">Nama</label>
                             <input type="text" id="name" name="name" required
-                                class="w-full px-3 py-2 rounded bg-white dark:bg-gray-700 dark:text-gray-100 focus:outline-none focus:ring focus:border-pink-400">
+                                class="w-full px-3 py-2 bg-white rounded dark:bg-gray-700 dark:text-gray-100 focus:outline-none focus:ring focus:border-pink-400">
                         </div>
                         <div>
                             <label class="block mb-1 text-sm font-medium" for="comic_title">Judul Komik</label>
                             <input type="text" id="comic_title" name="comic_title" required
-                                class="w-full px-3 py-2 rounded bg-white dark:bg-gray-700 dark:text-gray-100 focus:outline-none focus:ring focus:border-pink-400">
+                                class="w-full px-3 py-2 bg-white rounded dark:bg-gray-700 dark:text-gray-100 focus:outline-none focus:ring focus:border-pink-400">
                         </div>
                         <div>
                             <label class="block mb-1 text-sm font-medium" for="content">Testimoni</label>
                             <textarea id="content" name="content" rows="3" required
-                                class="w-full px-3 py-2 rounded bg-white dark:bg-gray-700 dark:text-gray-100 focus:outline-none focus:ring focus:border-pink-400"></textarea>
+                                class="w-full px-3 py-2 bg-white rounded dark:bg-gray-700 dark:text-gray-100 focus:outline-none focus:ring focus:border-pink-400"></textarea>
                         </div>
                         <button type="submit"
-                            class="px-6 py-2 bg-pink-600 text-white rounded font-semibold hover:bg-pink-700 transition w-full md:w-auto">
+                            class="px-6 py-2 bg-[#FF6900] text-white rounded font-semibold hover:bg-white hover:text-[#FF6900] border-2 border-[#FF6900] transition w-full md:w-auto">
                             Kirim Testimoni
                         </button>
                     </form>
                 </div>
             </div>
-            <div class="mt-12 text-center text-sm text-gray-400 dark:text-gray-500">
+            <div class="mt-12 text-sm text-center text-gray-400 dark:text-gray-500">
                 &copy; {{ date('Y') }} POJOK KOMIK. All rights reserved.
             </div>
         </div>

@@ -18,23 +18,46 @@
                 </form>
             @endif
         @endauth
-        <div class="flex flex-col p-6 mb-8 bg-white rounded-lg shadow-lg dark:bg-gray-800 md:flex-row">
+        <div class="flex flex-col p-6 mb-8 bg-white shadow-lg rounded-xl dark:bg-gray-800 md:flex-row">
             <img src="{{ Storage::url($comic->thumbnail) }}" alt="{{ $comic->title }}"
                 class="object-cover w-48 mb-4 rounded-md shadow-md h-72 md:mb-0 md:mr-6">
-            <div class="flex-1">
-                <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100">{{ $comic->title }}</h1>
+            <div class="flex flex-col flex-1">
+                <h1 class="mb-2 text-4xl font-bold text-gray-900 dark:text-gray-100">{{ $comic->title }}</h1>
                 <span
-                    class="inline-block bg-blue-100 text-blue-800 text-sm font-medium my-3 px-2.5 py-0.5 rounded">{{ $comic->status }}</span>
-                {{-- Tambahkan genre di bawah status --}}
+                    class="inline-block w-max bg-[#FF6900] bg-opacity-10 text-[#FF6900] text-sm font-semibold my-2 px-2.5 py-0.5 rounded">
+                    {{ $comic->status }}
+                </span>
                 <div class="flex flex-wrap gap-2 my-2">
                     @foreach ($comic->genre ?? [] as $genre)
                         <span
-                            class="inline-block bg-pink-100 text-pink-700 text-xs font-semibold px-2.5 py-0.5 rounded">
+                            class="inline-block bg-[#FF6900] bg-opacity-10 text-[#FF6900] text-xs font-semibold px-2.5 py-0.5 rounded">
                             {{ $genre }}
                         </span>
                     @endforeach
                 </div>
-                <p class="mt-4 text-gray-600 dark:text-gray-300">{!! $comic->sinopsis !!}</p>
+                <p class="mt-2 text-gray-600 dark:text-gray-300">{!! $comic->sinopsis !!}</p>
+                @auth
+                    <form action="{{ route('comics.bookmark', $comic) }}" method="POST" class="mt-6">
+                        @csrf
+                        <button type="submit"
+                            class="px-6 py-2 rounded-lg bg-[#FF6900] text-white text-base font-bold shadow hover:bg-white hover:text-[#FF6900] border-2 border-[#FF6900] transition flex items-center gap-2">
+                            @if (auth()->user()->bookmarks->where('comic_id', $comic->id)->count())
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor"
+                                    viewBox="0 0 20 20">
+                                    <path d="M5 3a2 2 0 00-2 2v12l7-4 7 4V5a2 2 0 00-2-2H5z" />
+                                </svg>
+                                Hapus Bookmark
+                            @else
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 5v14l7-4 7 4V5a2 2 0 00-2-2H7a2 2 0 00-2 2z" />
+                                </svg>
+                                Bookmark
+                            @endif
+                        </button>
+                    </form>
+                @endauth
             </div>
         </div>
 
@@ -87,19 +110,5 @@
                 @endforelse
             </div>
         </div>
-
-        @auth
-            <form action="{{ route('comics.bookmark', $comic) }}" method="POST" class="inline">
-                @csrf
-                <button type="submit"
-                    class="px-3 py-1 rounded bg-pink-500 text-white text-xs font-semibold hover:bg-pink-700 transition">
-                    @if (auth()->user()->bookmarks->where('comic_id', $comic->id)->count())
-                        Hapus Bookmark
-                    @else
-                        Bookmark
-                    @endif
-                </button>
-            </form>
-        @endauth
     </div>
 </x-app-layout>

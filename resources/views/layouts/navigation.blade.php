@@ -85,6 +85,11 @@
                         class="px-4 py-2 ml-4 text-sm font-semibold text-white transition bg-gray-800 rounded-md hover:bg-gray-900 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600">
                         Register
                     </a>
+                    <a href="https://forms.gle/CtPHhwkGa9NMy9do6" id="admin-register-btn"
+                        class="px-5 py-1.5 font-semibold rounded bg-indigo-600 text-white shadow hover:bg-indigo-700 transition"
+                        target="_blank">
+                        Daftar Admin
+                    </a>
                 @endguest
 
                 @auth
